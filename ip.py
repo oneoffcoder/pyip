@@ -7,6 +7,11 @@ import sys
 from argparse import RawTextHelpFormatter
 
 def parse_args(args):
+    """
+    Parses arguments.
+    :param args: Arguments.
+    :return: Arguments.
+    """
     parser = argparse.ArgumentParser('IP Locator', epilog='One-Off Coder, http://www.oneoffcoder.com', formatter_class=RawTextHelpFormatter)
     
     parser.add_argument('-u', '--url', default='https://myexternalip.com/raw', required=False, help="""the URL of the site to get your external IP (default: https://myexternalip.com/raw)
@@ -23,17 +28,33 @@ def parse_args(args):
     return parser.parse_args(args)
 
 def get_html(url):
+    """
+    Gets the HTML content from the specified URL.
+    :param url: URL.
+    :return: HTML content.
+    """
     resp = requests.get(url)
     content = resp.text
     return content
 
 def get_ip(content):
+    """
+    Gets the IP address(es) from the content.
+    :param content: HTML content.
+    :return: A pipe-delimited string of all IP addresses found.
+    """
     pattern = r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
     res = re.findall(pattern, content)
     return ' | '.join(res)
 
 
 def send_email(ip, email, pw):
+    """
+    Sends email.
+    :param ip: IP address.
+    :param email: Email.
+    :param pw: Password.
+    """
     context = ssl.create_default_context()
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
