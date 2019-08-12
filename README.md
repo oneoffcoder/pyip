@@ -61,7 +61,7 @@ sudo systemctl restart pyip.service
 On Windows, use the [sc command](https://docs.microsoft.com/en-us/windows/win32/services/controlling-a-service-using-sc).
 
 ```bash
-sc create PyIP binPath="C:\ProgramData\Anaconda3\python.exe C:\dev\ip.py -e john@gmail.com -p pw123"
+sc create PyIP binPath="C:\ProgramData\Anaconda3\python.exe C:\dev\ip.py -e alan.turing@gmail.com -p codebreaker"
 sc start PyIP
 sc delete PyIP
 ```
