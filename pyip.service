@@ -1,0 +1,12 @@
+[Unit]
+Description=PyIP Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/path/to/python /usr/bin/ip.py -e alan.turing@gmail.com -p codebreaker
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
