@@ -23,6 +23,7 @@ def parse_args(args):
     parser.add_argument('-s', '--sleep', default=3600, type=int, required=False, help='seconds between checking/sending IP in email (default: 3600)')
     parser.add_argument('-e', '--email', required=True, help='gmail email address')
     parser.add_argument('-p', '--password', required=True, help='gmail email password')
+    parser.add_argument('--subject', default='IP Address', required=False, help='email subject line modifier (default: IP Address)')
     parser.add_argument('--version', action='version', version='%(prog)s v0.0.1')
 
     return parser.parse_args(args)
@@ -48,10 +49,11 @@ def get_ip(content):
     return ' | '.join(res)
 
 
-def send_email(ip, email, pw):
+def send_email(ip, subject, email, pw):
     """
     Sends email.
     :param ip: IP address.
+    :param subject: Email subject line.
     :param email: Email.
     :param pw: Password.
     """
@@ -62,7 +64,7 @@ def send_email(ip, email, pw):
         server.starttls(context=context)
         server.ehlo()
         server.login(email, pw)
-        message = 'Subject: IP Address\n\n{}'.format(ip)
+        message = 'Subject: {}\n\n{}'.format(subject, ip)
         server.sendmail(email, email, message)
     except Exception as e:
         print(e)
@@ -72,6 +74,7 @@ def send_email(ip, email, pw):
 args = parse_args(sys.argv[1:])
 
 url = args.url
+subject = args.subject
 email = args.email
 pw = args.password
 max_emails = args.max_emails
@@ -81,7 +84,7 @@ counter = 1
 while True:
     content = get_html(url)
     ip = get_ip(content)
-    send_email(ip, email, pw)
+    send_email(ip, subject, email, pw)
     print('{}: {} : done'.format(counter, ip))
     counter = counter + 1
 

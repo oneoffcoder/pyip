@@ -3,8 +3,8 @@
 A simple Python program that may be used as a service for Linux and Windows to get your external (public) IP and send it to yourself. Use at your own risk as password parameter for the email account being used has to be passed in unencrypted. The following is a printout of the help.
 
 ```
-usage: IP Locator [-h] [-u URL] [-m MAX] [-s SLEEP] -e EMAIL -p PASSWORD
-                  [--version]
+usage: IP Locator [-h] [-u URL] [-m MAX_EMAILS] [-s SLEEP] -e EMAIL -p
+                  PASSWORD [--subject SUBJECT] [--version]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -13,13 +13,15 @@ optional arguments:
                                 - https://www.ipchicken.com
                                 - https://myexternalip.com/raw
                             
-  -m MAX, --max MAX     maximum emails; set to -1 for indefinite (default: -1)
+  -m MAX_EMAILS, --max_emails MAX_EMAILS
+                        maximum emails; set to -1 for indefinite (default: -1)
   -s SLEEP, --sleep SLEEP
                         seconds between checking/sending IP in email (default: 3600)
   -e EMAIL, --email EMAIL
                         gmail email address
   -p PASSWORD, --password PASSWORD
                         gmail email password
+  --subject SUBJECT     email subject line modifier (default: IP Address)
   --version             show program's version number and exit
 
 One-Off Coder, http://www.oneoffcoder.com
