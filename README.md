@@ -1,3 +1,5 @@
+![One-Off Coder Logo](/logo.png "One-Off Coder")
+
 # Intro
 
 A simple Python program that may be used as a service for Linux and Windows to get your external (public) IP and send it to yourself. Use at your own risk as password parameter for the email account being used has to be passed in unencrypted. The following is a printout of the help.
@@ -106,3 +108,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+# Contact
+
+[One-Off Coder](https://cloud.docker.com/u/oneoffcoder/) 
+* [Website](https://www.oneoffcoder.com)
+* [Twitter](https://twitter.com/oneoffcoder)
+* [Facebook](https://www.facebook.com/oneoffcoder)
+* [YouTube](https://www.youtube.com/channel/UCCCv8Glpb2dq2mhUj5mcHCQ)
